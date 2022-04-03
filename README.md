@@ -1,3 +1,6 @@
+> This repository is a fork from [geerlingguy/internet-pi](https://github.com/geerlingguy/internet-pi), I added a couple extra new features on top of the existing ones. If you are interested in knowing more, please look for the lines starting with "✨ danifr's fork".
+
+
 # Internet Pi
 
 [![CI](https://github.com/geerlingguy/internet-pi/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/internet-pi/actions?query=workflow%3ACI)
@@ -17,6 +20,29 @@ So that's what this is.
 **Pi-hole**: Installs the Pi-hole Docker configuration so you can use Pi-hole for network-wide ad-blocking and local DNS. Make sure to update your network router config to direct all DNS queries through your Raspberry Pi if you want to use Pi-hole effectively!
 
 ![Pi-hole on the Internet Pi](/images/pi-hole.png)
+
+(✨ danifr's fork) **Access services via custom domain names**
+
+Just add this settion to your `config.yml`file:
+
+```
+domain_name_enable: true
+domain_name: 'home.local' # whatever you want basically
+domain_grafana: 'grafana' # to access grafana via http://grafana.home.local
+domain_prometheus: 'prometheus' # to access prometheus via http://prometheus.home.local
+domain_pihole: 'pihole'  # to access pihole via http://pihole.home.local
+```
+
+Then run `ansible-playbook main.yml` and you should be able to internally access, grafana, prometheus and pihole via the domain names
+you specfied in the config.yml.
+
+(✨ danifr's fork) **Rasberry Pi monitoring**: Installs Influxdb, Telegraf, and a [Grafana dashboard](https://grafana.com/grafana/dashboards/10578) to monitor your Raspberry stats.
+
+![Raspberry Pi Monitoring Dashboard in Grafana](/images/raspberrypi-monitoring.png)
+
+(✨ danifr's fork) **Pi-Hole monitoring**: Installs [pihole-exporter](https://github.com/eko/pihole-exporter) (a Prometheus exporter for Pi-Hole) and a [Grafana dashboard](https://grafana.com/grafana/dashboards/10176) to visualize all metrics produced by Pi-hole.
+
+![Pi-hole Monitoring Dashboard in Grafana](/images/pi-hole-monitoring.png)
 
 Other features:
 
@@ -71,7 +97,7 @@ To find the dashboard, navigate to Dashboards, click Browse, then go to the Inte
 To upgrade Pi-hole to the latest version, run the following commands:
 
 ```bash
-cd ~/pi-hole # 
+cd ~/pi-hole #
 docker-compose pull             # pulls the latest images
 docker-compose up -d --no-deps  # restarts containers with newer images
 docker system prune --all       # deletes unused images
