@@ -15,7 +15,7 @@ networks:
 services:
 {% if domain_name_enable %}
   nginx-proxy:
-    image: nginxproxy/nginx-proxy
+    image: nginxproxy/nginx-proxy:0.9.1
     restart: always
     ports:
       - "80:80"
