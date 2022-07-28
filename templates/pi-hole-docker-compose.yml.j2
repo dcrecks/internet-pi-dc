@@ -19,8 +19,6 @@ services:
     networks:
       - back-tier
       - front-tier
-    ports:
-      - "9617:9617/tcp"
     environment:
       PIHOLE_HOSTNAME:  '{{ pihole_hostname }}'
       PIHOLE_PORT: 80
@@ -36,13 +34,6 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "67:67/udp"
-{% if domain_name_enable and domain_name and domain_pihole %}
-      - "38080:80/tcp"
-{% else %}
-      - "80:80/tcp"
-{% endif %}
-      - "443:443/tcp"
     environment:
       TZ: '{{ pihole_timezone }}'
       WEBPASSWORD: '{{ pihole_password }}'
