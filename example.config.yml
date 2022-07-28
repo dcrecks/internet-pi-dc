@@ -3,7 +3,7 @@
 config_dir: '~'
 
 # Domain names configuration (related services need to be enabled).
-domain_name_enable: false
+domain_name_enable: true
 domain_name: 'home.local'
 domain_pihole: 'pihole'          # to access pihole via: http://pihole.home.local
 domain_grafana: 'grafana'        # to access grafana via: http://grafana.home.local
