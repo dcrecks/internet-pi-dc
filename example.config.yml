@@ -16,7 +16,7 @@ pihole_timezone: America/Chicago
 pihole_password: "change-this-password"
 
 # Raspberry monitoring configuration
-raspberry_monitoring_enable: false
+raspberry_monitoring_enable: true
 telegraf_retention_policy: '90d'
 telegraf_password: 'admin'
 
