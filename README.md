@@ -23,7 +23,7 @@ So that's what this is.
 
 (✨ danifr's fork) **Access services via custom domain names**
 
-Just add this settion to your `config.yml`file:
+Just add this settion to your `config.yml` file:
 
 ```
 domain_name_enable: true
@@ -37,6 +37,14 @@ Then run `ansible-playbook main.yml` and you should be able to internally access
 you specfied in the config.yml.
 
 (✨ danifr's fork) **Rasberry Pi monitoring**: Installs Influxdb, Telegraf, and a [Grafana dashboard](https://grafana.com/grafana/dashboards/10578) to monitor your Raspberry stats.
+
+Just add these lines to your `config.yml` to start using it:
+
+```
+raspberry_monitoring_enable: true
+telegraf_retention_policy: '90d'
+telegraf_password: 'admin'
+```
 
 ![Raspberry Pi Monitoring Dashboard in Grafana](/images/raspberrypi-monitoring.png)
 
