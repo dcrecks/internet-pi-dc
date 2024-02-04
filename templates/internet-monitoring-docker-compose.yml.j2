@@ -15,7 +15,7 @@ networks:
 services:
 {% if domain_name_enable %}
   nginx-proxy:
-    image: nginxproxy/nginx-proxy:0.9.0
+    image: nginxproxy/nginx-proxy:1780-alpine
     restart: always
     ports:
       - "80:80"
@@ -27,7 +27,7 @@ services:
 {% endif %}
 
   prometheus:
-    image: prom/prometheus:v2.47.0
+    image: prom/prometheus:v2.49.1
     restart: always
     volumes:
       - ./prometheus/:/etc/prometheus/
@@ -52,7 +52,7 @@ services:
 {% endif %}
 
   grafana:
-    image: grafana/grafana:10.0.5
+    image: grafana/grafana:10.0.10
     restart: always
     volumes:
       - grafana_data:/var/lib/grafana
@@ -91,7 +91,7 @@ services:
 
   nodeexp:
     privileged: true
-    image: prom/node-exporter:v1.6.1
+    image: prom/node-exporter:v1.7.0
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro

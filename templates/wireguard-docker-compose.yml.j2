@@ -5,8 +5,6 @@ version: "3.5"
 {% if domain_name_enable and domain_name and domain_wireguard %}
 {# Make sure wireguard and nginx-proxy are in the same network #}
 networks:
-  front-tier:
-    name: internet-monitoring-front-tier
   back-tier:
     name: internet-monitoring-back-tier
 {% endif %}
@@ -14,7 +12,7 @@ networks:
 services:
   wireguard:
     container_name: "wg-easy"
-    image: "weejewel/wg-easy:7"
+    image: "ghcr.io/wg-easy/wg-easy:10"
     networks:
       - back-tier
     sysctls:
@@ -37,6 +35,7 @@ services:
 {% endif %}
     ports:
       - "51820:51820/udp"
+      - "51821:51821/tcp"
     volumes:
       - ./config/:/etc/wireguard
     restart: unless-stopped

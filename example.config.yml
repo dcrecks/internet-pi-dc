@@ -16,7 +16,7 @@ pihole_hostname: pihole
 pihole_timezone: America/Chicago
 pihole_password: "change-this-password"
 
-# Wireguard configuration. Check https://github.com/weejewel/wg-easy#options for extra info
+# Wireguard configuration. Check https://github.com/wg-easy/wg-easy/pkgs/container/wg-easy#options for extra info
 wireguard_enable: true
 wireguard_host: 'public.hostname.of.your.VPN.server'
 wireguard_default_address: 10.8.0.x
