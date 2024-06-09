@@ -21,3 +21,11 @@
     project_src: "{{ config_dir }}/pi-hole/"
     build: false
   become: false
+
+- name: Get infos on container
+  docker_container_info:
+    name: pihole
+  register: result
+
+- set_fact:
+    pihole_ipv4: "{{ result.container.NetworkSettings.Networks.front_tier.IPAddress }}"

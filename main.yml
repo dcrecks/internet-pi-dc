@@ -34,10 +34,6 @@
       ansible.builtin.import_tasks: tasks/raspberry-monitoring.yml
       when: raspberry_monitoring_enable
 
-    - name: Set up wireguard.
-      ansible.builtin.import_tasks: tasks/wireguard.yml
-      when: wireguard_enable
-
     - name: Set up Internet Monitoring.
       ansible.builtin.import_tasks: tasks/internet-monitoring.yml
       when: monitoring_enable
@@ -45,6 +41,10 @@
     - name: Set up Pi Hole.
       ansible.builtin.import_tasks: tasks/pi-hole.yml
       when: pihole_enable
+
+    - name: Set up wireguard.
+      ansible.builtin.import_tasks: tasks/wireguard.yml
+      when: wireguard_enable
 
     - name: Set up Shelly Plug Monitoring.
       ansible.builtin.import_tasks: tasks/shelly-plug.yml

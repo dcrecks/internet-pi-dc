@@ -6,9 +6,9 @@ version: "3.5"
 {# Make sure pihole and nginx-proxy are in the same network #}
 networks:
   front-tier:
-    name: internet-monitoring-front-tier
+    name: front_tier
   back-tier:
-    name: internet-monitoring-back-tier
+    name: back_tier
 {% endif %}
 
 # More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
